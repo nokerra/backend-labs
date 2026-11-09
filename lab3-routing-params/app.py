@@ -23,8 +23,9 @@ difficulties = ["easy", "medium", "hard"]
 
 @app.before_request
 def log_request():
+    ip = request.remote_addr
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] "
-          f"{request.method} {request.full_path}")
+          f"{request.method} {request.full_path} | IP: {ip}")
 
 def find_recipe(recipe_id):
     return next((r for r in recipes if r["id"] == recipe_id), None)
